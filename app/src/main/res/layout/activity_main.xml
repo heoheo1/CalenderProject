@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:id="@+id/sv"
     tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/txt_title"
@@ -15,6 +21,7 @@
         android:gravity="center"
         android:text="약속 어플"
         android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,26 +40,26 @@
         android:id="@+id/calendar_View"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        app:mcv_showOtherDates="all"
-        app:mcv_selectionColor="#FF0000"
         android:background="@drawable/calender_coners"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/img_line" />
+        app:layout_constraintTop_toTopOf="@id/img_line"
+        app:mcv_selectionColor="#FF0000"
+        app:mcv_showOtherDates="all" />
 
     <TextView
         android:id="@+id/txt_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
         android:layout_marginTop="15dp"
         android:text="날짜를 선택해 주세요."
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_View"/>
+        app:layout_constraintTop_toBottomOf="@+id/calendar_View" />
 
     <TextView
         android:id="@+id/txt_phone"
@@ -65,6 +72,15 @@
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_date" />
+        <TextView
+            android:id="@+id/txt_delet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="잘못된 연락처는 해당 번호를 길게 눌러주세요."
+            app:layout_constraintTop_toBottomOf="@+id/btn_phone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="5dp"/>
 
     <Button
         android:id="@+id/btn_phone"
@@ -75,6 +91,8 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/recycler_coners"
         android:text="연락처로 가기"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/txt_phone"
         app:layout_constraintTop_toBottomOf="@+id/txt_date" />
 
@@ -88,7 +106,7 @@
         android:text="시간 : "
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/list_view" />
 
     <EditText
         android:id="@+id/edt_time"
@@ -104,45 +122,60 @@
         android:padding="5dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/btn_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/list_view" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="36dp"
-        android:text="메모 : "
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="36dp"
+            android:text="메모 : "
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/edt_memo"
-        android:layout_width="239dp"
+        android:layout_width="230dp"
         android:layout_height="82dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/recycler_coners"
         android:ems="11"
-        android:textSize="12dp"
         android:gravity="top|start"
         android:hint="간단한 내용을 입력해 주세요."
         android:inputType="textPersonName"
         android:padding="10dp"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/edt_time" />
 
-    <Button
-        android:id="@+id/btn_Ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="확인"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_memo" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:background="@drawable/bg_corners"
+            app:layout_constraintTop_toBottomOf="@+id/txt_delet"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="677dp" />
+
+        <Button
+            android:id="@+id/btn_Ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="확인"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_memo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
