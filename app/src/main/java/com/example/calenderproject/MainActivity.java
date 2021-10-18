@@ -139,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
                     String memo = edt_memo.getText().toString();
                     String time = edt_time.getText().toString();
 
-
                     int phoneSize=adapter.getCount();
 
                     for (int i=0; i<phoneSize;i++){
